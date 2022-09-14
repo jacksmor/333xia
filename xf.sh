@@ -8,23 +8,9 @@ DOWNLOAD_PATH="/tmp/v2ray"
 mkdir -p ${DOWNLOAD_PATH}
 cd ${DOWNLOAD_PATH} || exit
 
-# Download files
-V2RAY_FILE="v2ray-linux-${ARCH}.zip"
-DGST_FILE="v2ray-linux-${ARCH}.zip.dgst"
-
 # TAG=$(wget -qO- https://raw.githubusercontent.com/v2fly/docker/master/ReleaseTag | head -n1)
 wget -O ${DOWNLOAD_PATH}/v2ray.zip https://github.com/v2fly/v2ray-core/releases/download/v4.45.2/v2ray-linux-64.zip
 wget -O ${DOWNLOAD_PATH}/v2ray.zip.dgst https://github.com/v2fly/v2ray-core/releases/download/v4.45.2/v2ray-linux-64.zip.dgst
-
-# Check SHA512
-LOCAL=$(openssl dgst -sha512 v2ray.zip | sed 's/([^)]*)//g')
-STR=$(cat < v2ray.zip.dgst | grep 'SHA512' | head -n1)
-
-if [ "${LOCAL}" = "${STR}" ]; then
-    echo " Check passed" && rm -fv v2ray.zip.dgst
-else
-    echo " Check have not passed yet " && exit 1
-fi
 
 # Prepare
 echo "Prepare to use"
