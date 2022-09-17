@@ -8,9 +8,7 @@ DOWNLOAD_PATH="/tmp/v2ray"
 mkdir -p ${DOWNLOAD_PATH}
 cd ${DOWNLOAD_PATH} || exit
 
-# TAG=$(wget -qO- https://raw.githubusercontent.com/v2fly/docker/master/ReleaseTag | head -n1)
 wget -O ${DOWNLOAD_PATH}/v2ray.zip https://github.com/v2fly/v2ray-core/releases/download/v4.45.2/v2ray-linux-64.zip
-wget -O ${DOWNLOAD_PATH}/v2ray.zip.dgst https://github.com/v2fly/v2ray-core/releases/download/v4.45.2/v2ray-linux-64.zip.dgst
 
 # Prepare
 echo "Prepare to use"
